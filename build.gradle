@@ -14,6 +14,10 @@ buildscript {
         version_moshi = "1.13.0"
         version_room = "2.4.0"
         version_okhttp = "4.9.1"
+        version_navigation = "2.3.5"
+        version_hilt = "2.40.5"
+        version_hilt_lifecycle_viewmodel = "1.0.0-alpha03"
+        version_hilt_compiler = "1.0.0"
         // unit test
         version_junit = "4.13.2"
     }
@@ -25,8 +29,8 @@ buildscript {
         classpath "com.android.tools.build:gradle:$version_gradle"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin_gradle_plugin"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$version_hilt"
     }
 }
 
