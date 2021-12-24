@@ -3,12 +3,17 @@ buildscript {
     ext {
         version_gradle = "7.0.4"
         version_kotlin_ktx = "1.7.0"
+        version_kotlin_gradle_plugin = "1.6.0"
         version_androidx_appcompat = "1.4.0"
         version_android_material = "1.4.0"
         version_constraint_layout = "2.1.2"
         version_androidx_lifecycle = "2.4.0"
         version_activity = "1.4.0"
         version_fragment = "1.4.0"
+        version_retrofit = "2.9.0"
+        version_moshi = "1.13.0"
+        version_room = "2.4.0"
+        version_okhttp = "4.9.1"
         // unit test
         version_junit = "4.13.2"
     }
@@ -17,8 +22,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.4"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath "com.android.tools.build:gradle:$version_gradle"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin_gradle_plugin"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

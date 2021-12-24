@@ -1,15 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.inhouse.classifiedsapp"
         minSdk 26
-        targetSdk 31
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -42,6 +43,23 @@ dependencies {
 
 //    implementation "androidx.activity:activity-ktx:$version_activity"
     implementation "androidx.fragment:fragment-ktx:$version_fragment"
+
+    // networking
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$version_okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$version_okhttp"
+
+    // JSON parser
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$version_moshi"
+
+    // Room dependency
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
 
     testImplementation "junit:junit:$version_junit"
     androidTestImplementation "androidx.test.ext:junit:1.1.3"
