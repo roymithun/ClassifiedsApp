@@ -1,5 +1,6 @@
 package com.inhouse.classifiedsapp.core.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -24,5 +25,5 @@ interface ClassifiedAdDao {
     fun getAllClassifiedAds(): Flow<List<ClassifiedAd>>
 
     @Query("SELECT * FROM ${ClassifiedAd.TABLE_NAME} WHERE uid = :uid")
-    fun getClassifiedAdById(uid: Int): Flow<ClassifiedAd>
+    fun getClassifiedAdById(uid: String): LiveData<ClassifiedAd>
 }

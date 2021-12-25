@@ -26,6 +26,10 @@ class HomeViewModel @Inject constructor(
     val classifiedsAdsListFlow = repository.flowClassifiedAds()
         .stateIn(viewModelScope, WhileSubscribed(), emptyList())
 
+    init {
+        fetchClassifiedAds()
+    }
+
     fun fetchClassifiedAds() {
         _showProgress.postValue(true)
         viewModelScope.launch {

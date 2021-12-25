@@ -11,8 +11,11 @@ import com.inhouse.classifiedsapp.utils.longDateFormat
 import java.util.*
 
 @BindingAdapter("createdAtDate")
-fun TextView.setCreateAtDate(createdAt: String) {
-    text = longDateFormat().format(dateFormatter().parse(createdAt) ?: Date())
+fun TextView.setCreatedAtDate(createdAt: String?) {
+    text = createdAt?.let {
+        longDateFormat().format(dateFormatter().parse(createdAt) ?: Date())
+    } ?: kotlin.run { longDateFormat().format(Date()) }
+
 }
 
 @BindingAdapter("thumbnailFromUrls")
@@ -25,6 +28,23 @@ fun ImageView.setThumbnailFromUrls(imageUrlsThumbnails: List<String>) {
             transformations(CircleCropTransformation())
         }
     } else {
+        load(R.drawable.ic_broken_image)
+    }
+}
+
+@BindingAdapter("imageFromUrls")
+fun ImageView.setImageFromUrls(imageFromUrls: List<String>?) {
+    imageFromUrls?.let {
+        val imgUrl = imageFromUrls[0]
+        if (imageFromUrls.isNotEmpty()) {
+            load(imgUrl) {
+                placeholder(R.drawable.loading_img)
+                error(R.drawable.ic_broken_image)
+            }
+        } else {
+            load(R.drawable.ic_broken_image)
+        }
+    } ?: kotlin.run {
         load(R.drawable.ic_broken_image)
     }
 }

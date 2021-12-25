@@ -58,6 +58,7 @@ dependencies {
 
     // JSON parser
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$version_moshi"
 
     // room dependency

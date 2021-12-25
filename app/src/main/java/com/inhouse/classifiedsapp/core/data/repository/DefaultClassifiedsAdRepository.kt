@@ -1,5 +1,6 @@
 package com.inhouse.classifiedsapp.core.data.repository
 
+import androidx.lifecycle.LiveData
 import com.inhouse.classifiedsapp.core.data.local.ClassifiedAdDao
 import com.inhouse.classifiedsapp.core.data.remote.ApiService
 import com.inhouse.classifiedsapp.core.model.ClassifiedAd
@@ -40,4 +41,8 @@ class DefaultClassifiedsAdRepository @Inject constructor(
 
     override fun flowClassifiedAds(): Flow<List<ClassifiedAd>> =
         classifiedAdsDao.getAllClassifiedAds()
+
+    override fun classifiedAdsForUid(uid: String): LiveData<ClassifiedAd> =
+        classifiedAdsDao.getClassifiedAdById(uid)
+
 }

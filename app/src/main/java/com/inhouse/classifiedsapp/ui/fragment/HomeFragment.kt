@@ -2,16 +2,16 @@ package com.inhouse.classifiedsapp.ui.fragment
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.inhouse.classifiedsapp.R
 import com.inhouse.classifiedsapp.core.model.ClassifiedAd
 import com.inhouse.classifiedsapp.databinding.FragmentHomeBinding
@@ -45,23 +45,18 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         listAdapter = ClassifiedsAdListAdapter(object : ClassifiedsAdListAdapter.OnClickListener {
             override fun onClick(classifiedAd: ClassifiedAd) {
-                Toast.makeText(
-                    requireContext(),
-                    "Item Clicked with uid=${classifiedAd.uid}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val classifiedAdUid = classifiedAd.uid
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeToDetail(
+                        classifiedAdUid
+                    )
+                )
             }
         })
         binding.lifecycleOwner = viewLifecycleOwner
         binding.homeViewModel = homeViewModel
         binding.listAdapter = listAdapter
-        homeViewModel.classifiedsAdsListFlow.value.let { currentState ->
-            if (currentState.isEmpty()) {
-                homeViewModel.fetchClassifiedAds()
-            } else {
-                listAdapter.submitList(currentState)
-            }
-        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             homeViewModel.classifiedsAdsListFlow.collect {
                 listAdapter.submitList(it)

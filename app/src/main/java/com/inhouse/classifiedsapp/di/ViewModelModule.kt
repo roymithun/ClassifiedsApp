@@ -13,5 +13,5 @@ import dagger.hilt.android.scopes.ViewModelScoped
 abstract class ViewModelModule {
     @ViewModelScoped
     @Binds
-    abstract fun bindMatchRepository(repository: DefaultClassifiedsAdRepository): ClassifiedsAdRepository
+    abstract fun bindClassifiedsAdRepository(repository: DefaultClassifiedsAdRepository): ClassifiedsAdRepository
 }
