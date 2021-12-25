@@ -1,11 +1,12 @@
 package com.inhouse.classifiedsapp.di
 
-/*
 import android.content.Context
 import androidx.room.Room
-import com.inhouse.soccerstats.data.local.SoccerMatchDao
-import com.inhouse.soccerstats.data.local.SoccerMatchDatabase
-import com.inhouse.soccerstats.utils.DATABASE_NAME
+import com.inhouse.classifiedsapp.core.data.local.AppDatabase
+import com.inhouse.classifiedsapp.core.data.local.ClassifiedAdDao
+import com.inhouse.classifiedsapp.core.data.local.converter.RoomTypeConverter
+import com.inhouse.classifiedsapp.utils.DATABASE_NAME
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,12 +19,17 @@ import javax.inject.Singleton
 object DataModule {
     @Singleton
     @Provides
-    fun soccerMatchDao(
+    fun roomTypeConverter() = RoomTypeConverter(Moshi.Builder().build())
+
+    @Singleton
+    @Provides
+    fun classifiedAdsDao(
         @ApplicationContext context: Context,
-    ): SoccerMatchDao =
+        roomTypeConverter: RoomTypeConverter
+    ): ClassifiedAdDao =
         Room.databaseBuilder(
             context,
-            SoccerMatchDatabase::class.java,
+            AppDatabase::class.java,
             DATABASE_NAME
-        ).build().soccerMatchDao()
-}*/
+        ).addTypeConverter(roomTypeConverter).build().classifiedAdDao()
+}

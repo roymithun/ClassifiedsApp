@@ -1,5 +1,6 @@
 package com.inhouse.classifiedsapp.core.data.repository
 
+import com.inhouse.classifiedsapp.core.data.local.ClassifiedAdDao
 import com.inhouse.classifiedsapp.core.data.remote.ApiService
 import com.inhouse.classifiedsapp.core.model.ClassifiedAdList
 import com.inhouse.classifiedsapp.utils.Resource
@@ -11,7 +12,8 @@ import javax.inject.Singleton
 
 @Singleton
 class DefaultClassifiedsAdRepository @Inject constructor(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val classifiedAdsDao: ClassifiedAdDao
 ) : ClassifiedsAdRepository {
     override suspend fun getClassifiedsAdList(): Resource<ClassifiedAdList> {
         return try {
