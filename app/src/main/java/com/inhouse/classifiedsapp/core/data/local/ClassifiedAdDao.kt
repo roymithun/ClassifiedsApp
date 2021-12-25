@@ -15,10 +15,10 @@ interface ClassifiedAdDao {
      * @param classifiedAds List of ClassifiedAd
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllClassifiedAds(classifiedAds: List<ClassifiedAd>)
+    suspend fun insertAllClassifiedAds(classifiedAds: List<ClassifiedAd>): List<Long>
 
     /**
-     * Fetches all the classifiedAds from the [Match.TABLE_NAME] table.
+     * Fetches all the classifiedAds from the [ClassifiedAd.TABLE_NAME] table.
      * @return [Flow]
      */
     @Query("SELECT * FROM ${ClassifiedAd.TABLE_NAME}")

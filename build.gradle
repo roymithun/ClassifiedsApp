@@ -22,6 +22,14 @@ buildscript {
         version_swiperefresh_layout = "1.1.0"
         // unit test
         version_junit = "4.13.2"
+        version_core_test = "2.1.0"
+        version_kotlinx_coroutines_test = "1.5.0"
+        version_truth = "1.1.3"
+        version_mockwebserver = "4.9.1"
+        version_androidx_junit_ext = "1.1.3"
+        version_espresso = "3.4.0"
+        version_navigation_testing = "2.3.5"
+        version_espresso_contrib = "3.4.0"
     }
     repositories {
         google()
