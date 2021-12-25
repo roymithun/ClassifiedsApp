@@ -18,6 +18,8 @@ buildscript {
         version_hilt = "2.40.5"
         version_hilt_lifecycle_viewmodel = "1.0.0-alpha03"
         version_hilt_compiler = "1.0.0"
+        version_coil = "1.4.0"
+        version_swiperefresh_layout = "1.1.0"
         // unit test
         version_junit = "4.13.2"
     }

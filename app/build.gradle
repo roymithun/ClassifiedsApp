@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -71,6 +74,12 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$version_hilt"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$version_hilt_lifecycle_viewmodel"
     kapt "androidx.hilt:hilt-compiler:$version_hilt_compiler"
+
+    // Image processing
+    implementation "io.coil-kt:coil:$version_coil"
+
+    // swipe refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$version_swiperefresh_layout"
 
     testImplementation "junit:junit:$version_junit"
     androidTestImplementation "androidx.test.ext:junit:1.1.3"
